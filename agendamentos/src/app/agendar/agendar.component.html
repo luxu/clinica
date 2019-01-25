@@ -1,0 +1,107 @@
+<!-- INÍCIO DO CONTEÚDO -->
+<section class="content-header"></section>
+
+<section class="content">
+
+  <div class="jumbotron welcome-jumbotron">
+
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+      <div class="form-row">
+
+        <div class="form-group col-md-5" [ngClass]="aplicaCssErro(id)">
+          <label for="id">ID</label>
+          <input class="form-control" name="id"
+            type="number" placeholder="digite um ID" [ngModel]="usuario.id"
+            required #id="ngModel">
+          <div *ngIf="!id.valid && id.touched"
+            class="alert alert-danger" role="alert">
+              ID é obrigatório.
+          </div>
+        </div>
+
+        <div class="form-group col-md-7" [ngClass]="aplicaCssErro(paciente)">
+          <label for="paciente">Paciente</label>
+          <input class="form-control" name="paciente"
+            type="text" placeholder="digite o nome" [ngModel]="usuario.paciente"
+            required #paciente="ngModel">
+            <div *ngIf="!paciente.valid && paciente.touched"
+              class="alert alert-danger" role="alert">
+              Nome do paciente é obrigatório.
+            </div>
+        </div>
+
+      </div>
+
+        <div class="form-group">
+          <label for="fisioterapeuta">Fisioterapeuta</label>
+          <input class="form-control" name="fisioterapeuta"
+            type="text" placeholder="digite o nome do fisioterapeuta"
+            [ngModel]="usuario.fisioterapeuta"
+            required #fisioterapeuta="ngModel">
+            <div *ngIf="!fisioterapeuta.valid && fisioterapeuta.touched"
+              class="alert alert-danger" role="alert">
+              Nome do(a) fisioterapeuta é obrigatório.
+            </div>
+        </div>
+
+      <div class="form-row">
+
+        <div class="form-group col-sm-3">
+          <label for="tipo">Tipo:</label>
+          <select class="form-control" id="tipo" name="tipo"
+          [ngModel]="usuario.tipo"
+           required #tipo="ngModel">
+            <option *ngFor="let tipoAgendamento of tiposAgendamentos"
+              [value]="tipoAgendamento.nome">{{tipoAgendamento.nome}}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-sm-3" [ngClass]="aplicaCssErro(data)">
+          <label for="data">Data:</label>
+          <input class="form-control" name="data"
+            type="date" placeholder="digite uma data para o agendamento"
+            [ngModel]="usuario.data"
+            required #data="ngModel">
+            <div *ngIf="!data.valid && data.touched"
+              class="alert alert-danger" role="alert">
+              Data é obrigatória.
+            </div>
+        </div>
+
+        <div class="form-group col-sm-3" [ngClass]="aplicaCssErro(hora)">
+          <label for="hora">Hora:</label>
+          <input class="form-control" name="hora"
+            type="time" placeholder="digite uma hora"
+            [ngModel]="usuario.hora"
+            required #hora="ngModel">
+            <div *ngIf="!hora.valid && hora.touched"
+              class="alert alert-danger" role="alert">
+              Hora é obrigatória.
+            </div>
+        </div>
+
+        <div class="form-group" class="col-sm-3" [ngClass]="aplicaCssErro(gravacao)">
+          <label for="gravacao">Gravado em:</label>
+          <input class="form-control" name="gravacao"
+            type="date" placeholder="digite um data de gravação"
+            [ngModel]="usuario.gravacao"
+            required #gravacao="ngModel">
+            <div *ngIf="!gravacao.valid && gravacao.touched"
+              class="alert alert-danger" role="alert">
+              Data da gravação é obrigatória.
+            </div>
+        </div>
+      </div>
+
+        <div class="form-group">
+          <button [disabled]="!f.valid" type="button" class="btn btn-primary">Confirmar</button>
+        </div>
+
+    </form>
+
+  </div>
+
+</section>
+
+<!-- <mt-form-debug [form]="f"></mt-form-debug> -->
