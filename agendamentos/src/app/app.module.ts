@@ -10,7 +10,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AgendarComponent } from './agendar/agendar.component';
 import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component'
+import { HomeComponent } from './home/home.component';
+import { FormDebugComponent } from './form-debug/form-debug.component'
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HomeComponent } from './home/home.component'
     AppComponent,
     AgendarComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    FormDebugComponent
   ],
   imports: [
     BrowserModule,

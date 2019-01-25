@@ -3,7 +3,6 @@ import { Http } from '@angular/http';
 
 // import 'rxjs/add/operator/map';
 
-// import { Dados } from './dados.model'
 import { TiposAgendamentos } from './tipos-agendar.model'
 
 @Component({
@@ -20,11 +19,11 @@ export class AgendarComponent implements OnInit {
   ]
 
   usuario: any = {
-    id: null,
+    id: 1,
     paciente: 'Luciano',
     fisioterapeuta: 'Dr. Perla',
-    data: '21/01/2019',
-    hora: '14:30',
+    data: new Date(),
+    hora: new Date().getHours()+':'+ new Date().getMinutes(),
     gravacao: new Date(),
     tipo: null
   }
@@ -35,11 +34,12 @@ export class AgendarComponent implements OnInit {
   }
 
   onSubmit(form){
-    // let url = 'https://httpbin.org/post'
-    // this.http.post(url,JSON.stringify(form.value))
+    let url = 'https://httpbin.org/post'
+    // this.http.post(
+    //   url,
+    //   JSON.stringify(form.value))
     // .map(res => res)
     // .subscribe(dados => console.log(dados));
-
   }
 
   verificaValidTouched(campo){
