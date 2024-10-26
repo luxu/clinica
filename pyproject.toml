@@ -1,0 +1,12 @@
+[project]
+name = "clinica"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "django-extensions>=3.2.3",
+    "django>=5.1.2",
+    "ipython>=8.29.0",
+    "python-decouple>=3.8",
+]

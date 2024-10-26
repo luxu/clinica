@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block title %}Página de Login{% endblock title %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock css %}
+
+{% block content %}
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+
+        {% if form.errors %}
+            <p>Seu nome de usuário e senha não coincidem. Por favor, tente novamente.</p>
+        {% endif %}
+
+        {% if next %}
+            {% if user.is_authenticated %}
+                <p>Sua conta não tem acesso a esta página. Para continuar, faça login com uma conta que tenha acesso</p>
+            {% else %}
+                <p>Faça login para ver esta página.</p>
+            {% endif %}
+        {% endif %}
+
+        <form method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <input type="text" id="login" class="fadeIn second" name="username" placeholder="login">
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+            <input type="submit" class="fadeIn fourth" value="Log In">
+            <input type="hidden" name="next" value="{{ next }}"/>
+        </form>
+
+        {# Assumes you setup the password_reset view in your URLconf #}
+        <p><a href="{% url 'password_reset' %}">Esqueceu a senha?</a></p>
+        <p>É novo?<a href="{% url 'cadastrar_usuario' %}">Cadastre-se</a></p>
+    </div>
+    </div>
+
+{% endblock %}

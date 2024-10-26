@@ -1,0 +1,12 @@
+{% include 'base.html' %}
+
+{% block content %}
+    <h3>Cadastrar Médico</h3>
+    <div class="jumbotron">
+        <form action="#" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Confirmar</button>
+        </form>
+    </div>
+{% endblock content %}
