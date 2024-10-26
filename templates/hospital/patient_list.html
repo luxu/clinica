@@ -1,0 +1,32 @@
+{% include 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <h2>Pacientes do Hospital</h2>
+        <a class="btn btn-primary" href="{% url 'patient_create_view' %}">Adicionar Paciente</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Médico</th>
+                    <th>Atendimento</th>
+                    <th class="text-center">Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for paciente in object_list %}
+                <tr>
+                    <th>{{ paciente.name }}</th>
+                    <th>{{ paciente.medico }}</th>
+                    <th>{{ paciente.is_atendimento }}</th>
+                    <th class="text-center">
+                        <a class="btn btn-success" href="">editar</a>
+                        <a class="btn btn-danger" href="">deletar</a>
+                    </th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock content %}

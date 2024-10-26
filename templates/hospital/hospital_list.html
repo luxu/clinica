@@ -1,0 +1,28 @@
+{% include 'base.html' %}
+
+{% block content %}
+    <div class="container text-center">
+        <div class="mb-4 mt-4">
+            <p class="h2">Hospitais</p>
+            <div class="d-flex justify-content-end mb-4 mt-4">
+                <a class="btn btn-primary" href="">Adicionar Hospital</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-condensed">
+                    <thead>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Médico</th>
+                    </thead>
+                    <tbody>
+                    {% for hospital in object_list %}
+                        <tr>{{ hospital }}</tr>
+                    {% empty %}
+                        <tr class="text-center">Nenhum hospital cadastrado!</tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

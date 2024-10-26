@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="jumbotron">
+        <div class="mb-4 mt-4">
+            <p class="h3">Escolha um Hospital</p>
+        </div>
+        <form action="{% url 'pegar_hospital' %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <select class="form-select form-select-sm" name="id_hospital">
+                    <option value="">---</option>
+                    {% for hospital in object_list %}
+                        <option value="{{ hospital.id }}">{{ hospital.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-primary" type="submit" >Confirmar</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
